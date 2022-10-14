@@ -1,4 +1,4 @@
-## How to do?
+## How to use?
 Write code in file with any name **.c**
 
 example ``test.c``
