@@ -50,6 +50,15 @@ List of Examples
 > 2. Run ```valgrind ./bin_clear``` to see memcheck analyzer output
 > 3. After build go to **html_dir** - it contain *.html* report of static analyze. You can see this file with web browser.
 
+## Use template for own code
+Write code in file with any name **.c** in dir **template/**
+
+example ``test.c``
+
+after that do 
+
+```make```
+
 
 
 ## Exmaple output
