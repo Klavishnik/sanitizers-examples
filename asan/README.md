@@ -3,7 +3,7 @@ Imagine, that you have file ``test.c`` with your C code and you want build it wi
 
 RUN:
 ```
-clang -g -fsanitize=memory test.c -o bin
+clang -g -fsanitize=address test.c -o bin
 ```
 run ``bin`` <-- this is your binary with ASAN
 
@@ -19,7 +19,7 @@ in **dir_ouput** will be report *.html*
 
 Запустите:
 ```
-clang -g -fsanitize=memory test.c -o bin
+clang -g -fsanitize=address test.c -o bin
 ```
 run ``bin`` <-- это ваш бинарь с ASAN
 
