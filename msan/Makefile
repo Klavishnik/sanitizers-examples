@@ -1,31 +1,30 @@
 CC=clang
 
-CFLAGS=-g -fsanitize=memory -fno-omit-frame-pointer -fPIE -pie
+CFLAGS=-g -fsanitize=memory -fno-omit-frame-pointer 
 LDFLAGS=
 
-SOURCES=uninitialized_memory_reads.c
+SOURCES=*.c
 STATIC_REPORT_DIR=html_dir
 
-
+SANITISER=msan
 EXECUTABLE_PREFIX=bin
 EXECUTABLE_CLEAR=$(EXECUTABLE_PREFIX)_clear 
-EXECUTABLE_ASAN=$(EXECUTABLE_PREFIX)_msan
+EXECUTABLE_ASAN=$(EXECUTABLE_PREFIX)_$(SANITISER)
 
 .PHONY: all clean
-.SECONDARY: msan static orig
+.SECONDARY: $(SANITISER) static orig
 
-all:	 msan orig
+all:	$(SANITISER) orig
 
 static:
 	$(CC) --analyze -Xanalyzer -analyzer-output=html -o $(STATIC_REPORT_DIR) $(SOURCES)
 	
 orig:
 	$(CC) $(SOURCES) -o $(EXECUTABLE_CLEAR)
-msan:	
+
+$(SANITISER):
 	$(CC) $(CFLAGS) $(SOURCES) -o $(EXECUTABLE_ASAN)
 
 clean:
-	rm $(EXECUTABLE_PREFIX)*
 	rm -rf $(STATIC_REPORT_DIR) 
-
-
+	rm $(EXECUTABLE_PREFIX)*
