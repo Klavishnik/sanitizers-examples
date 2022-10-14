@@ -2,7 +2,7 @@
 Some simplest examples of typicall errors and how to detect them with sanitizers, valgrind and static analyzer of clang
 
 ## Описание
-Небольшие примеры с стандартными ошибками и способами их детектирования, сипользую санитайзеры, valgrind и статический анализатор clang
+Небольшие примеры с стандартными ошибками и способами их детектирования, используя санитайзеры, valgrind и статический анализатор clang
 
 
 ## Main Readme
