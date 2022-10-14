@@ -52,10 +52,23 @@ List of Examples
 
 
 
+## Exmaple output
 
-
-
-
+>### Static analyzer
+>
+>![Static analyzer output!](/docks/static.jpg "Static analyzer")
+>
+>### ASAN sanitizer
+>
+>![ASAN sanitizer output!](/docks/ASAN.jpg "ASAN sanitizer")
+>
+>### MSAN sanitizer
+>
+>![MSAN sanitizer output!](/docks/MSAN.jpg "MSAN sanitizer")
+>
+>### Valgrind
+>
+>![Valgrind sanitizer output!](/docks/valgrind.jpg "Valgrind sanitizer")
 
 
 ### If you got errors 
