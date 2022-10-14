@@ -18,7 +18,6 @@ all:	static asan orig
 
 static:
 	$(CC) --analyze -Xanalyzer -analyzer-output=html -o $(STATIC_REPORT_DIR) $(SOURCES)
-	mv $(STATIC_REPORT_DIR)/* $(STATIC_REPORT_DIR)/report.html
 	
 orig:
 	$(CC) $(SOURCES) -o $(EXECUTABLE_CLEAR)
