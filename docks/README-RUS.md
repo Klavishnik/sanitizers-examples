@@ -1,33 +1,40 @@
-## Description
-Some simplest examples of typicall errors and how to etect them with sanitizers
+## Описание 
+Несколько небольших прмеров с типичными ошибками, которые бывают при работе с массивами, а также способы их детектирования через санитайзеры, статический анализ и valgrind.
 
-## List of examples:
+## Список примеров:
 ### MSAN
-MemorySanitizer (MSan) is a detector of uninitialized memory reads in C/C++ programs.
-
-Uninitialized values occur when stack- or heap-allocated memory is read before it is written. MSan detects cases where such values affect program execution.
-
+MemorySanitizer (MSan) Санитайзер памяти позволяет обнаружить работу с объявленной, но неинициализированной (как на стекекк, так и на куче) памятью в C/C++.
 
 ### ASAN
 
-AddressSanitizer (aka ASan) is a memory error detector for C/C++.
+AddressSanitizer (aka ASan) - Адресный санитайзер позволяет обнаруживать ошибки памяти в C/C++.
 
-List of Examples
+Список ошибок, которые может обнаружить ASAN с примерами:
+(ASAN детектирует больше ошибок, но они специфичны. За подробностями в раздел "Ссылки")
 
-1. Use after free (dangling pointer dereference)
-2. Heap buffer overflow
-3. Stack buffer overflow
-4. Memory leaks
+1. Использование указателя после освобождения памяти
+2. Переполнение буффера на куче
+3. Переполнение буффера на стэке
+4. Утечки памяти
 
-## How to build?
-  Each folder contains **Makefile** that takes the following parameters:
- - *static* - build source with static analyzer and get report to **html-dir** folder;
- - *orig* - build source general binary file without instrumentation. Output name - **bin_clear**;
- - *asan/msan* - build with instrumentation ASAN or MSAN (look at name of main folder). Output name **bin_asan** or **bin_msan**;
- - *clean* - remove builded files;
- - *all* - make stages *static, asan/(msan), orig*;
+В файлах репозитория эти ошибки разбиты по папкам, которые имеют следующие названия:
 
-  Examples:
+1. use_after_free
+2. stack_buffer_overflow
+3. heap_buffer_overflow
+4. memory_leak
+
+heap_example - отдельный пример неправильного выделения памяти под динамический массив
+
+## Как собрать?
+  в каждой папке есть **Makefile** который принимает параметры в формате ``make name``, где ``name``:
+ - *static* - позволяет прогнать код статическим анализатором clang и поместить очет в папку **html-dir**;
+ - *orig* - собирает обычный бинарь без всяких проверок и инструментации. Имя скомпилированного файла - **bin_clear**;
+ - *asan/msan* - сборка бинаря с инструментацией ASAN or MSAN (смотря в какой папке собираете). Имя скомпилированного файла **bin_asan** или **bin_msan**;
+ - *clean* - удаляет все файлы, полученные при сборке;
+ - *all* - выполнит стадии *static, asan/(msan), orig*. Данная стадия запускается при выполнении ``make`` без аргументов
+
+  Примеры:
   
   *build all:*
   ```
@@ -39,18 +46,30 @@ List of Examples
   make clean
   ```
 
-## How to use?
-> 1. Go to folder with needed example and run:
+## Как использовать?
+> 1. Перейдите в директорию с нужным вам примером и выполните:
 > ``./bin_asan ``
-> > or for msan folder
+> > или для папки с  msan 
 > > `` ./bin_msan  ``
 > >
-> > you will see sanitiser output with table and description of error
+> > Вы увидете вывод санитайзера с описанием ошибки
 > 
-> 2. Run ```valgrind ./bin_clear``` to see memcheck analyzer output
-> 3. After build go to **html_dir** - it contain *.html* report of static analyze. You can see this file with web browser.
+> 2. Выполните ```valgrind ./bin_clear``` чтобы увидеть вывод memcheck 
+> 3. После сборки (выполнения команды ``make``) перейдите в **html_dir** - в ней есть файлик *.html* с отчетом статического анализатора. Его можно посмотреть через веб-браузер.
 
 
+### Шаблон
+## Как использовать?
+
+Напишите свой код в любой файлик с расширением **.c** в папке **template**
+
+Например ``test.c``
+
+После этого выполните 
+
+```make```
+
+Все, что написано выше, будет применено к вашему файлу
 
 ## Exmaple output
 
@@ -71,18 +90,18 @@ List of Examples
 >![Valgrind sanitizer output!](/docks/valgrind.jpg "Valgrind sanitizer")
 
 
-### If you got errors 
-If ASAN get errors take this:
+### Если при запуске ./bin_asan или ./bin_msan вылетела ошибка с трассой выполнения, выполните следующее
+Для ASAN:
 ``
 export ASAN_OPTIONS=use_sigaltstack=false
 ``
 
-If MSAN get errors take this:
+Для MSAN :
 ``
 export MSAN_OPTIONS=use_sigaltstack=false
 ``
 
-## Reference:
+## Ссылки:
 https://github.com/google/sanitizers
 
 https://releases.llvm.org/11.0.0/tools/clang/docs/AddressSanitizer.html
