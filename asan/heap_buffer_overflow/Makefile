@@ -14,7 +14,7 @@ EXECUTABLE_ASAN=$(EXECUTABLE_PREFIX)_$(SANITISER)
 .PHONY: all clean
 .SECONDARY: $(SANITISER) static orig
 
-all:	asan orig
+all:    $(SANITISER) orig
 
 static:
 	$(CC) --analyze -Xanalyzer -analyzer-output=html -o $(STATIC_REPORT_DIR) $(SOURCES)
