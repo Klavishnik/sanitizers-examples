@@ -20,7 +20,7 @@ static:
 	$(CC) --analyze -Xanalyzer -analyzer-output=html -o $(STATIC_REPORT_DIR) $(SOURCES)
 	
 orig:
-	$(CC) $(SOURCES) -o $(EXECUTABLE_CLEAR)
+	$(CC) $(SOURCES) -g -o $(EXECUTABLE_CLEAR)
 
 $(SANITISER):
 	$(CC) $(CFLAGS) $(SOURCES) -o $(EXECUTABLE_ASAN)
