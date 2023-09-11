@@ -12,12 +12,16 @@ Some simplest examples of typicall errors and how to detect them with sanitizers
 
 [How to use MSAN manualy?](/msan/README.md)
 
+[How to use MSAN manualy?](/ubsan/README.md)
+
 ## Основное описание
 [Нажми меня](/docks/README-RUS.md)
 
 [Как использовать ASAN и статический анализатор самому?](/asan/README.md)
 
 [Как использовать MSAN самому?](/msan/README.md)
+
+[Как использовать UBSAN самому?](/ubsan/README.md)
 
 ## Reference:
 https://github.com/google/sanitizers
