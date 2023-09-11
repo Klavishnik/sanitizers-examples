@@ -15,7 +15,7 @@ Some simplest examples of typicall errors and how to detect them with sanitizers
 [How to use MSAN manualy?](/ubsan/README.md)
 
 ## Основное описание
-[Нажми меня](/docks/README-RUS.md)
+[**README НА ВЕСЬ РЕПОЗИТОРИЙ!!! ТЕБЕ СЮДА**](/docks/README-RUS.md)
 
 [Как использовать ASAN и статический анализатор самому?](/asan/README.md)
 
