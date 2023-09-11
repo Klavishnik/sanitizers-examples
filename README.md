@@ -17,6 +17,8 @@ Some simplest examples of typicall errors and how to detect them with sanitizers
 ## Основное описание
 [**README НА ВЕСЬ РЕПОЗИТОРИЙ!!! ТЕБЕ СЮДА**](/docks/README-RUS.md)
 
+[**ГАЙД НА БЕЗОПАСНУЮ РАЗРАБОТКУ!!! ТЕБЕ СЮДА**](/docks/SDL-RUS.md)
+
 [Как использовать ASAN и статический анализатор самому?](/asan/README.md)
 
 [Как использовать MSAN самому?](/msan/README.md)
