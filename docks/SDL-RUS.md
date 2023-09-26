@@ -119,6 +119,12 @@ gcc -Wall -Wextra -Werror main.c
 
 Просто сам факт наличия ошибки.
 
+Команда компиляции
+
+```
+gcc -Wall -Wextra -Werror main.c -ftrapv
+```
+
 ## Как отладить?
 
 Использовать санитайзер кода UBSAN.
